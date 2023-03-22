@@ -6,7 +6,7 @@ function App() {
 
   const [file, setFile] = useState()
   const [numberOfPages, setNumberOfPages] = useState()
-  console.log('hi file', file)
+ 
 
    const handleDownloadedVersionClick = async (fil) => {
     if (fil){
@@ -15,24 +15,24 @@ function App() {
       const srcPdf = await blob.arrayBuffer()
       const pdfDoc = await PDFDocument.create()
       const sourcePdfDoc = await PDFDocument.load(srcPdf)
-      console.log(srcPdf)
-      console.log(sourcePdfDoc)
+      // console.log(srcPdf)
+      // console.log(sourcePdfDoc)
       const copiedPages = await pdfDoc.copyPages(sourcePdfDoc, [0, 3, 89])
 const [, , ninetiethPage] = copiedPages;
-      console.log(ninetiethPage)
+      // console.log(ninetiethPage)
       pdfDoc.addPage(ninetiethPage)
       pdfDoc.setTitle(`Extracted part the from ${fil.name}`)
       const pdfBytes = await pdfDoc.save()
-      // setFinalFile(pdfBytes)
+     
     
-      console.log('final file pdf', pdfBytes)
+      // console.log('final file pdf', pdfBytes)
       const newBlob= new Blob([pdfBytes], {type: "application/pdf"})
       console.log('newBlob file pdf', newBlob)
 
       const imageFile= URL.createObjectURL(newBlob)
       setNumberOfPages(imageFile)
       
-    }else{console.log('hi yhe file dosen\'t exist')}
+    }
   };
 
   return (
