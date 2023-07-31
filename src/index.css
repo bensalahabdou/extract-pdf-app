@@ -32,7 +32,12 @@ body {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: clamp(2rem, 10vw, 3rem); 
+  line-height: 1.1;
+}
+
+h2 > strong {
+  font-size: clamp(0.2rem, 10vw, 1.75rem) ;
   line-height: 1.1;
 }
 
@@ -40,7 +45,11 @@ label {
   cursor: pointer;
 }
 
-input {
+/* input {
+  display: none;
+} */
+
+#inputSrc {
   display: none;
 }
 
